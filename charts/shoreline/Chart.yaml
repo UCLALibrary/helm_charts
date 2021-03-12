@@ -1,0 +1,17 @@
+apiVersion: v2
+appVersion: "0.1"
+description: Charts for GeoBlacklight & Shoreline
+name: shoreline
+version: 0.3.0
+dependencies:
+  - name: postgresql
+    version: 8.10.14
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+  - name: geoserver
+    version: 1.0.0
+    repository: file://../geoserver
+  - name: solr
+    version: 1.5.3
+    repository: https://lib-helm-repo.ucsd.edu
+    condition: solr.enabled
