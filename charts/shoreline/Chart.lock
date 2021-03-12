@@ -8,5 +8,5 @@ dependencies:
 - name: solr
   repository: https://lib-helm-repo.ucsd.edu
   version: 1.5.3
-digest: sha256:b2dba04fb34c9682ee31be41085166a539e144d0b83673bb6d57860e13d15b27
-generated: "2020-12-21T08:55:33.957897767-08:00"
+digest: sha256:824a625c1f64b6b8c9ee7ba86fbe07ae0776902c6a689653b1d89891c3e110e6
+generated: "2021-03-12T15:37:05.392824333-08:00"
