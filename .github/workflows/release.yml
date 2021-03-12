@@ -24,6 +24,15 @@ jobs:
         with:
           version: v3.4.0
 
+      - name: Add helm repository dependencies
+        run: |
+          helm repo add ucsd https://lib-helm-repo.ucsd.edu
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+
+      - name: Refresh helm repo
+        run: |
+          helm repo update
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@120944e66390c2534cc1b3c62d7285ba7ff02594
         env:
