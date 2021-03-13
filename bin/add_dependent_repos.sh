@@ -11,7 +11,7 @@ main() {
 
   arr+=(
          ["ucsd"]="https://lib-helm-repo.ucsd.edu"
-         ["bitnami"]="https://chart.bitnami.com/bitnami"
+         ["bitnami"]="https://charts.bitnami.com/bitnami"
        )
 
   for key in ${!arr[@]};
