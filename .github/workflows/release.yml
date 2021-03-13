@@ -26,8 +26,7 @@ jobs:
 
       - name: Add helm repository dependencies
         run: |
-          helm repo add ucsd https://lib-helm-repo.ucsd.edu
-          helm repo add bitnami https://charts.bitnami.com/bitnami
+          bin/add_dependent_repos.sh
 
       - name: Refresh helm repo
         run: |
