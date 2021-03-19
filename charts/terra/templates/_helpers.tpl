@@ -50,13 +50,3 @@ app.kubernetes.io/name: {{ include "terra.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "terra.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "terra.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}
