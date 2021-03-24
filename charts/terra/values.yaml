@@ -29,6 +29,20 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+django:
+  run_env: "prod"
+  debug: "false"
+  allowed_hosts: []
+  #  - localhost
+  #  - 127.0.0.1
+  #  - [::1]
+  db_name: ""
+  db_user: ""
+  db_passwd: ""
+  db_host: ""
+  test_db_name: ""
+  email_host: ""
+
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -46,3 +60,4 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
