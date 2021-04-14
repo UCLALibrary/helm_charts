@@ -82,6 +82,10 @@ affinity: {}
 # Cantaloupe application
 cantaloupe:
   port: 8182
+  externalSecrets:
+    enabled: false
+    env: {}
   env:
-    CANTALOUPE_ENDPOINT_ADMIN_ENABLED: "true"
-    CANTALOUPE_ENDPOINT_ADMIN_SECRET: "admin"
+    CANTALOUPE_ENDPOINT_API_ENABLED: "true"
+    CANTALOUPE_ENDPOINT_ADMIN_SECRET: "test"
+  secrets: {}
