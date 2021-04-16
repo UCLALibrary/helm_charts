@@ -1,0 +1,27 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "qdb-cron.fullname" . }}
+spec:
+  schedule: "*/2 * * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: qdb-reports
+            image: uclalibrary/qdb-reports:latest
+            imagePullPolicy: Always
+            envFrom:
+            - secretRef:
+                name: test-qdb-cron-external
+            - configMapRef:
+                name: test-qdb-cron-cm
+            args:
+            - /bin/bash
+            - -c
+            - pytest tests/integration
+          restartPolicy: Never
+      backoffLimit: 5

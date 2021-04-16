@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "qdb-cron.fullname" . }}-cm
+data:
+{{- range $k, $v := .Values.qdbreports.env }}
+  {{ $k }}: {{ $v | quote }}
+{{- end }}

@@ -1,0 +1,18 @@
+resources: {}
+
+qdbreports:
+  env:
+    QDB_SMTP_SERVER: "smtp.ucla.edu"
+    QDB_PORT: "25"
+    QDB_FROM_ADDRESS: "avuong@library.ucla.edu"
+    QDB_TEST_RECIPIENT: "avuong@library.ucla.edu"
+    QDB_ENV: "dev"
+  externalSecrets:
+    backend: "systemManager"
+    env:
+      QDB_DB_SERVER: "/systems/prod-qdb-reports/qdb_db_server"
+      QDB_DB_DATABASE: "/systems/prod-qdb-reports/qdb_db_database"
+      QDB_DB_USER: "/systems/prod-qdb-reports/qdb_db_user"
+      QDB_DB_PASSWORD: "/systems/prod-qdb-reports/qdb_db_password"
+      QDB_APP_IP: "/systems/prod-qdb-reports/qdb_app_ip"
+      QDB_PASSWORD: "/systems/prod-qdb-reports/qdb_password"
