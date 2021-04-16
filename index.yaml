@@ -89,6 +89,17 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/ingress-nginx-3.23.0/ingress-nginx-3.23.0.tgz
     version: 3.23.0
+  qdb-cron:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-04-16T21:16:19.833617289Z"
+    description: A Helm chart for Kubernetes
+    digest: 57453c57bc6aaab040d2c56300658bc9e32cac420ecb5604238df920d59ba6e8
+    name: qdb-cron
+    type: application
+    urls:
+    - https://github.com/UCLALibrary/helm_charts/releases/download/qdb-cron-0.1.0/qdb-cron-0.1.0.tgz
+    version: 0.1.0
   shoreline:
   - apiVersion: v2
     appVersion: "0.1"
@@ -121,4 +132,4 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/terra-0.1.0/terra-0.1.0.tgz
     version: 0.1.0
-generated: "2021-04-14T04:01:42.653758636Z"
+generated: "2021-04-16T21:16:19.833627689Z"
