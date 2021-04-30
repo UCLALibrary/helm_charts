@@ -30,18 +30,23 @@ ingress:
   #      - chart-example.local
 
 django:
-  run_env: "prod"
-  debug: "false"
-  allowed_hosts: []
-  #  - localhost
-  #  - 127.0.0.1
-  #  - [::1]
-  db_name: ""
-  db_user: ""
-  db_passwd: ""
-  db_host: ""
-  test_db_name: ""
-  email_host: ""
+  env:
+    run_env: "prod"
+    debug: "false"
+    allowed_hosts: []
+    #  - localhost
+    #  - 127.0.0.1
+    #  - [::1]
+    db_name: ""
+    db_user: ""
+    db_host: ""
+    test_db_name: ""
+    email_host: ""
+  externalSecrets:
+    backend: "systemManager"
+    env:
+      db_passwd: ""
+      django_secret_key: ""
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
