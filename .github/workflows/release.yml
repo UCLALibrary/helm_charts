@@ -27,7 +27,6 @@ jobs:
       - name: Add helm repository dependencies
         run: |
           find charts -maxdepth 1 -type d -exec helm dependency update {} \;
-          helm repo update
 
       - name: Lint helm charts
         run: |
