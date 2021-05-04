@@ -26,10 +26,7 @@ jobs:
 
       - name: Add helm repository dependencies
         run: |
-          bin/add_dependent_repos.sh
-
-      - name: Refresh helm repo
-        run: |
+          find charts -type d -depth 1 -exec helm dependency update {} \;
           helm repo update
 
       - name: Run chart-releaser
