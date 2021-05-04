@@ -33,7 +33,7 @@ jobs:
 
       - name: Get list of files changed from PR
         run: |
-          echo "CHANGED_FILES=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files | jq -r '.[].filename' | egrep charts | awk -F '[\/]' '{print $1\"/\"$2}' | sort -u | xargs)" >> $GITHUB_ENV
+          echo "CHANGED_FILES=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files | jq -r '.[].filename' | egrep charts | awk -F '[\/]' '{print $1"/"$2}' | sort -u | xargs)" >> $GITHUB_ENV
         if: github.event_name == 'pull_request'
 
       - name: debug
