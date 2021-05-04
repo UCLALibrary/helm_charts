@@ -26,12 +26,18 @@ jobs:
       - name: Lint helm charts
         run: |
           find charts -maxdepth 1 -type d -exec helm lint {} \;
-  test-cr:
-    runs-on: ubuntu-latest
-    container:
-      image: quay.io/helmpack/chart-releaser:v1.2.0
-    steps:
-      - name: test
-        run: |
-          helm version
 
+      - name: Install CR
+        run: |
+          wget -qO- https://github.com/helm/chart-releaser/releases/download/v1.2.0/chart-releaser_1.2.0_linux_amd64.tar.gz | tar -zxv -C /tmp - cr
+
+      - name: Test run CR
+
+      - name: Get list of files changed from PR
+        run: |
+          echo "CHANGED_FILES=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files | jq -r '.[].filename' | egrep charts | awk -F '[\/]' '{print $1\"/\"$2}' | sort -u | xargs)" >> $GITHUB_ENV
+        if: github.event_name == 'pull_request'
+
+      - name: debug
+        run: |
+          echo "$GITHUB_ENV
