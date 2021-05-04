@@ -38,4 +38,4 @@ jobs:
 
       - name: debug
         run: |
-          echo "$GITHUB_ENV
+          echo "$GITHUB_ENV"
