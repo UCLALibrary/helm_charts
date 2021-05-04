@@ -1,9 +1,6 @@
 name: PR check
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -29,3 +26,12 @@ jobs:
       - name: Lint helm charts
         run: |
           find charts -maxdepth 1 -type d -exec helm lint {} \;
+  test-cr:
+    runs-on: ubuntu-latest
+    container:
+      image: quay.io/helmpack/chart-releaser:v1.2.0
+    steps:
+      - name: test
+        run: |
+          echo "avuongtest"
+
