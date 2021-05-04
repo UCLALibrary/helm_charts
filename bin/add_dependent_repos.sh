@@ -12,6 +12,8 @@ main() {
   arr+=(
          ["ucsd"]="https://lib-helm-repo.ucsd.edu"
          ["bitnami"]="https://charts.bitnami.com/bitnami"
+         ["kubernetes-external-secrets"]="https://github.com/external-secrets/kubernetes-external-secrets"
+         ["argocd-redis"]="https://dandydeveloper.github.io/charts"
        )
 
   for key in ${!arr[@]};
