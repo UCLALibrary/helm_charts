@@ -1,7 +1,10 @@
-name: Release Charts
+name: PR check
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 
@@ -14,11 +17,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
       - name: Install Helm
         uses: azure/setup-helm@d55017e2a0bd09ce86bd16fbb585fde9f77fe871
         with:
@@ -27,13 +25,7 @@ jobs:
       - name: Add helm repository dependencies
         run: |
           find charts -type d -depth 1 -exec helm dependency update {} \;
-          helm repo update
 
       - name: Lint helm charts
         run: |
           find charts -type d -depth 1 -exec helm lint {} \;
-
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@120944e66390c2534cc1b3c62d7285ba7ff02594
-        env:
-          CR_TOKEN: "${{ secrets.CR_TOKEN }}"
