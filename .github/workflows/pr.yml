@@ -24,7 +24,7 @@ jobs:
           for chart in $(find charts -type f -name "Chart.yaml")
           do
             subchart_root=$(echo ${chart} | awk -F '[\/]' '{print $1"/"$2}')
-            bash -x helm repo add ${subchart_root} $(cat ${chart} | grep "repository: https" | awk '{print $2}')
+            echo "helm repo add ${subchart_root} $(cat ${chart} | grep "repository: https" | awk '{print $2}')"
             helm repo update
             helm dependency update ${subchart_root}
           done
