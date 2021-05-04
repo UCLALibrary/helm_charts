@@ -23,9 +23,10 @@ jobs:
         run: |
           for chart in $(find charts -type f -name "Chart.yaml")
           do
-            helm repo add $(cat ${chart} | grep "repository: https" | awk '{print $2}' | sort -u)
+            subchart_root=$(echo ${chart} | awk '{print $1"/"$2}' | sort -u)
+            helm repo add ${subchart_root} $(cat ${chart} | grep "repository: https" | awk '{print $2}' | sort -u)
             helm repo update
-            helm dependency update $(echo ${chart} | awk '{print $1"/"$2}' | sort -u)
+            helm dependency update ${subchart_root}
           done
 
       - name: Lint helm charts
