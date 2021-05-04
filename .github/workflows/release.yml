@@ -26,12 +26,12 @@ jobs:
 
       - name: Add helm repository dependencies
         run: |
-          find charts -type d -depth 1 -exec helm dependency update {} \;
+          find charts -maxdepth 1 -type d -exec helm dependency update {} \;
           helm repo update
 
       - name: Lint helm charts
         run: |
-          find charts -type d -depth 1 -exec helm lint {} \;
+          find charts -maxdepth 1 -type d -exec helm lint {} \;
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@120944e66390c2534cc1b3c62d7285ba7ff02594
