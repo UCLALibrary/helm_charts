@@ -21,12 +21,18 @@ jobs:
 
       - name: Add helm repository dependencies
         run: |
-          for chart in $(find charts -type f -name "Chart.yaml")
+          for chartyaml in $(find charts -type f -name "Chart.yaml")
           do
-            subchart_root=$(echo ${chart} | awk -F '[\/]' '{print $1"/"$2}')
-            echo "helm repo add ${subchart_root} $(cat ${chart} | grep "repository: https" | awk '{print $2}')"
-            helm repo update
-            helm dependency update ${subchart_root}
+            dependencies=$(cat ${chartyaml} | grep "repository: https" | awk '{print $2}' | xargs)"
+            subchart_root=$(echo ${chartyaml} | awk -F '[/]' '{print $1"/"$2}'
+            if ! [ -z subcharts_with_dependencies ]; then
+              for repo in dependencies
+              do
+                helm repo add ${repo} ${repo}
+                helm repo update
+                helm dependency update ${subchart_root}
+              done
+            fi
           done
 
       - name: Lint helm charts
