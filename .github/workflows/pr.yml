@@ -23,7 +23,7 @@ jobs:
         run: |
           for chartyaml in $(find charts -type f -name "Chart.yaml")
           do
-            dependencies=$(cat ${chartyaml} | grep "repository: https" | awk '{print $2}' | xargs)"
+            dependencies=$(cat ${chartyaml} | grep "repository: https" | awk '{print $2}' | xargs)
             subchart_root=$(echo ${chartyaml} | awk -F '[/]' '{print $1"/"$2}')
             if ! [ -z subcharts_with_dependencies ]; then
               for repo in dependencies
