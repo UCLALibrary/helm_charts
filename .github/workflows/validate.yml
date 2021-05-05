@@ -52,4 +52,4 @@ jobs:
 
       - name: Test CR action on changed file(s)
         run: |
-          for chart in ${{ env.CHANGED_FILES }}; do cr package ${chart}; done
+          find charts -maxdepth 1 -type d -exec cr package {} \;
