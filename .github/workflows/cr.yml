@@ -55,7 +55,7 @@ jobs:
           find charts/* -maxdepth 0 -type d | xargs ./cr package
   release:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == "test" }}
+    if: ${{ github.ref == 'test' }}
     needs: validate
     steps:
       - name: Checkout
