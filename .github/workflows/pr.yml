@@ -26,7 +26,7 @@ jobs:
             dependencies=$(cat ${chartyaml} | grep "repository: https" | awk '{print $2}' | xargs)
             subchart_root=$(echo ${chartyaml} | awk -F '[/]' '{print $1"/"$2}')
             if ! [ -z subcharts_with_dependencies ]; then
-              for repo in dependencies
+              for repo in ${dependencies}
               do
                 helm repo add ${repo} ${repo}
                 helm repo update
