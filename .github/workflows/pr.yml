@@ -1,4 +1,4 @@
-name: PR check
+name: validate
 
 on:
   pull_request:
@@ -46,12 +46,7 @@ jobs:
       - name: Get list of files changed from PR
         run: |
           echo "CHANGED_FILES=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files | jq -r '.[].filename' | egrep charts | awk -F '[\/]' '{print $1"/"$2}' | sort -u | xargs)" >> $GITHUB_ENV
-        if: github.event_name == 'pull_request'
 
-      - name: Test CR action on changed Chart file
+      - name: Test CR action on changed file(s)
         run: |
-          echo "$GITHUB_ENV"
-
-      - name: test yq
-        run: |
-          which yq
+          for chart in ${{ env.CHANGED_FILES }}; do cr package ${chart}; done
