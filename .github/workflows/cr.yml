@@ -53,13 +53,9 @@ jobs:
       - name: Test CR action on changed file(s)
         run: |
           find charts/* -maxdepth 0 -type d | xargs ./cr package
-
-      - name: test
-        run: |
-          echo "${GITHUB_REF}"
   release:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'test' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: validate
     steps:
       - name: Checkout
@@ -67,6 +63,33 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: test
+      - name: Install Helm
+        uses: azure/setup-helm@d55017e2a0bd09ce86bd16fbb585fde9f77fe871
+        with:
+          version: v3.4.0
+
+      - name: Configure Git
         run: |
-          echo "hello world"
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Add helm repository dependencies
+        run: |
+          for chartyaml in $(find charts -type f -name "Chart.yaml")
+          do
+            dependencies=$(cat ${chartyaml} | grep "repository: https" | awk '{print $2}' | xargs)
+            subchart_root=$(echo ${chartyaml} | awk -F '[/]' '{print $1"/"$2}')
+            if ! [ -z subcharts_with_dependencies ]; then
+              for repo in ${dependencies}
+              do
+                helm repo add ${repo} ${repo}
+                helm repo update
+                helm dependency update ${subchart_root}
+              done
+            fi
+          done
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@120944e66390c2534cc1b3c62d7285ba7ff02594
+        env:
+          CR_TOKEN: "${{ secrets.CR_TOKEN }}"
