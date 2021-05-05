@@ -53,6 +53,10 @@ jobs:
       - name: Test CR action on changed file(s)
         run: |
           find charts/* -maxdepth 0 -type d | xargs ./cr package
+
+      - name: test
+        run: |
+          echo "${GITHUB_REF}"
   release:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'test' }}
