@@ -4,7 +4,7 @@ metadata:
   name: {{ include "terra.fullname" . }}-configmap
   namespace: terra{{ .Values.django.run_env }}
   labels:
-{{ include "terra.fullname" . | indent 4 }}
+    {{- include "terra.labels" . | nindent 4 }}
 data:
   DJANGO_RUN_ENV: {{ .Values.django.env.run_env }}
   DJANGO_DEBUG: {{ .Values.django.env.debug | quote }}
