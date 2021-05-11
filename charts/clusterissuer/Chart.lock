@@ -1,0 +1,6 @@
+dependencies:
+- name: cert-manager
+  repository: https://helm-charts.library.ucla.edu
+  version: v1.3.1
+digest: sha256:a0976271f7d4cc4d9bc41a9dfad8f242d4bf48dbd7adfa4ef8111d73cc0552a9
+generated: "2021-05-10T09:20:12.738263-07:00"
