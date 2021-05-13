@@ -1,0 +1,17 @@
+acme:
+  email: user@example.com
+  server: https://my-acme-server-with-eab.com/directory
+  eab:
+    register:
+      enabled: false
+    keyID: "eab-keyid"
+    keySecretRef: "eab-secret"
+    keyAlgorithm: "HS256"
+  issuerAccountKeySecretRef: "issuer-account-key-ref"
+
+externalSecrets:
+  enabled: false
+  env: {}
+
+certmanager:
+  preinstalled: false

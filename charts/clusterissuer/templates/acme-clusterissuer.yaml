@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: {{ include "clusterissuer.fullname" . }}
+  labels:
+    {{- include "clusterissuer.labels" . | nindent 4 }}
+spec:
+  acme:
+    email: {{ .Values.acme.email }}
+    server: {{ .Values.acme.server }}
+    {{- if .Values.acme.eab.register.enabled }}
+    externalAccountBinding:
+      keyID: {{ .Values.acme.eab.keyID }}
+      keySecretRef:
+        name: {{ .Values.acme.eab.keySecretRef }}
+        key: secret
+      keyAlgorithm: {{ .Values.acme.eab.keyAlgorithm }}
+    {{- else }}
+    disableAccountKeyGeneration: true
+    {{- end }}
+    privateKeySecretRef:
+      name: {{ .Values.acme.issuerAccountKeySecretRef }}
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
+
