@@ -32,10 +32,16 @@ spec:
             httpGet:
               path: /
               port: http
+              httpHeaders:
+                - name: Host
+                  value: {{ range .Values.django.env.allowed_hosts }}{{ . }}{{ end }}
           readinessProbe:
             httpGet:
               path: /
               port: http
+              httpHeaders:
+                - name: Host
+                  value: {{ range .Values.django.env.allowed_hosts }}{{ . }}{{ end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
