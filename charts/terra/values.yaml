@@ -42,6 +42,7 @@ django:
     db_host: ""
     test_db_name: ""
     email_host: ""
+    target_port: ""
   externalSecrets:
     backend: "systemManager"
     env:

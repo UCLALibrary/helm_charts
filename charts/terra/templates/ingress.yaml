@@ -9,7 +9,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
-  namespace: terra{{ .Values.django.run_env }}
+  namespace: terra{{ .Values.django.env.run_env }}
   labels:
     {{- include "terra.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
