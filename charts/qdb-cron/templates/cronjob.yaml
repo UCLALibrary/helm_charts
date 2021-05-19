@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: {{ include "qdb-cron.fullname" . }}
 spec:
-  schedule: "*/2 * * * *"
+  schedule: "0 8 15 1-5,8-12 *"
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   jobTemplate:
@@ -16,12 +16,12 @@ spec:
             imagePullPolicy: Always
             envFrom:
             - secretRef:
-                name: test-qdb-cron-external
+                name: {{ include "qdb-cron.fullname" . }}-external
             - configMapRef:
-                name: test-qdb-cron-cm
+                name: {{ include "qdb-cron.fullname" . }}-cm
             args:
             - /bin/bash
             - -c
-            - pytest tests/integration
+            - python qdb/orchestrator.py
           restartPolicy: Never
       backoffLimit: 5
