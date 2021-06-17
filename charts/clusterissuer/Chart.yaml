@@ -2,7 +2,7 @@ apiVersion: v2
 name: clusterissuer
 description: A helm chart for deploying ClusterIssuers in Cert Manager
 type: application
-version: 1.3.1
+version: 1.3.1-1
 # Match this appVersion to the running version of Cert Manager tested against
 appVersion: v1.3.1
 dependencies:
