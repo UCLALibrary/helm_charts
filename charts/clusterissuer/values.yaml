@@ -9,14 +9,5 @@ acme:
     keyAlgorithm: "HS256"
   issuerAccountKeySecretRef: "issuer-account-key-ref"
 
-externalSecrets:
-  enabled: false
-  env: {}
-
-# Example if using external secrets
-#  env:
-#    - name: tls.key
-#      key: "/prod/prodenvironment/sectigo/sectigo-eab-pem"
-
 certmanager:
   preinstalled: false
