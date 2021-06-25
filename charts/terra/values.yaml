@@ -40,14 +40,19 @@ django:
     db_name: ""
     db_user: ""
     db_host: ""
+    # Include if externalSecrets enabled: "false"
+    #db_passwd: ""
     test_db_name: ""
     email_host: ""
     target_port: ""
   externalSecrets:
+    enabled: "false"
     backend: "systemManager"
-    env:
-      db_passwd: ""
-      django_secret_key: ""
+    env: {}
+    # Include below if enabled: "true"
+    #  db_passwd: ""
+    #  django_secret_key: ""
+  
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
