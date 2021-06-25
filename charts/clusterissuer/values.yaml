@@ -9,9 +9,5 @@ acme:
     keyAlgorithm: "HS256"
   issuerAccountKeySecretRef: "issuer-account-key-ref"
 
-externalSecrets:
-  enabled: false
-  env: {}
-
 certmanager:
   preinstalled: false
