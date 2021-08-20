@@ -344,6 +344,15 @@ entries:
   terra:
   - apiVersion: v2
     appVersion: "0.1"
+    created: "2021-08-20T17:13:39.36026539Z"
+    description: Chart for Travel & Entertainment Requests & Reports Application (TERRA)
+    digest: 23703ea485a2101a6363681d789fbac4d3730187f82677b1b789a46387f36319
+    name: terra
+    urls:
+    - https://github.com/UCLALibrary/helm_charts/releases/download/terra-0.1.3/terra-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: "0.1"
     created: "2021-07-09T14:48:29.532309026Z"
     description: Chart for Travel & Entertainment Requests & Reports Application (TERRA)
     digest: abc898026b3fe4360187f4163ebd09a3388b6334425307b50040a99e367be207
@@ -369,4 +378,4 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/terra-0.1.0/terra-0.1.0.tgz
     version: 0.1.0
-generated: "2021-07-09T14:48:29.532344226Z"
+generated: "2021-08-20T17:13:39.36030259Z"
