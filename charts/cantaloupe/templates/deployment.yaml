@@ -32,6 +32,8 @@ spec:
           args:
             - -c
             - docker-entrypoint.sh && exec java -Dcantaloupe.config=$CONFIG_FILE -XX:ActiveProcessorCount=4 -Xmx$HEAP_SIZE -jar /usr/local/cantaloupe/cantaloupe-*.*ar
+          command:
+            - sh
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
