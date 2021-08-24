@@ -111,6 +111,16 @@ entries:
   cantaloupe:
   - apiVersion: v2
     appVersion: 4.1.7
+    created: "2021-08-24T03:09:49.074793548Z"
+    description: UCLA Library Helm Chart for deploying Cantaloupe IIIF
+    digest: 1d214c64d27eb7fa67856acfe5e2894b04a35e70a2e6a519a392b5b30f98540a
+    name: cantaloupe
+    type: application
+    urls:
+    - https://github.com/UCLALibrary/helm_charts/releases/download/cantaloupe-2.0.1/cantaloupe-2.0.1.tgz
+    version: 2.0.1
+  - apiVersion: v2
+    appVersion: 4.1.7
     created: "2021-08-24T02:43:16.201369387Z"
     description: UCLA Library Helm Chart for deploying Cantaloupe IIIF
     digest: 12a879bbc5c82ed29c301de0a52a825731e71f838d3cc3d1d68708590e006a60
@@ -398,4 +408,4 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/terra-0.1.0/terra-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-24T02:43:16.201442192Z"
+generated: "2021-08-24T03:09:49.075026962Z"
