@@ -36,19 +36,18 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if or .Values.cantaloupe.env .Values.cantaloupe.externalSecrets.env .Values.cantaloupe.secrets.env }}
-          envFrom:
-            {{- if .Values.cantaloupe.externalSecrets.env }}
-            - secretRef:
-                name: {{ include "cantaloupe.fullname" . }}-external
+          {{- if or .Values.cantaloupe.env .Values.cantaloupe.envSecrets }}
+          env:
+            {{- range $k, $v := .Values.cantaloupe.env }}
+            - name: {{ $k }}
+              value: {{ $v | quote }}
             {{- end }}
-            {{- if .Values.cantaloupe.secrets.env }}
-            - secretRef:
-                name: {{ include "cantaloupe.fullname" . }}
-            {{- end }}
-            {{- if .Values.cantaloupe.env }}
-            - configMapRef:
-                name: {{ include "cantaloupe.fullname" . }}
+            {{- range $k, $v := .Values.cantaloupe.envSecrets }}
+            - name: {{ $k }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $v }}
+                  key: {{ $k | quote }}
             {{- end }}
           {{- end }}
           ports:
