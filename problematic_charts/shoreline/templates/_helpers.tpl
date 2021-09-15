@@ -44,12 +44,27 @@ app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
+{{/*
+Supports using an existing secret instead of one built using the Chart
+*/}}
+{{- define "shoreline.secretName" -}}
+{{- if .Values.existingSecret.enabled -}}
+{{- .Values.existingSecret.name -}}
+{{- else -}}
+{{ include "shoreline.fullname" . }}
+{{- end -}}
+{{- end -}}
+
 {{- define "shoreline.email.fullname" -}}
 {{- printf "%s-%s" .Release.Name "email" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "shoreline.geoserver.fullname" -}}
+{{- if .Values.geoserver.enabled -}}
 {{- printf "%s-%s" .Release.Name "geoserver" | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- .Values.geoserver.geoserverHostname -}}
+{{- end -}}
 {{- end -}}
 
 {{- define "shoreline.postgresql.fullname" -}}
@@ -62,10 +77,19 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 
 {{- define "shoreline.solr.fullname" -}}
 {{- if .Values.solr.enabled -}}
-{{- printf "%s-%s-svc" .Release.Name "solr" | trunc 63 | trimSuffix "-" -}}
+{{- printf "%s-%s" .Release.Name "solr" | trunc 63 | trimSuffix "-" -}}
 {{- else -}}
 {{- .Values.solr.solrHostname -}}
 {{- end -}}
+{{- end -}}
+
+{{- define "shoreline.solr.url" -}}
+{{- $user := .Values.solr.authentication.adminUsername -}}
+{{- $pass := .Values.solr.authentication.adminPassword -}}
+{{- $collection := .Values.shoreline.solr.collectionName -}}
+{{- $host := (include "shoreline.solr.fullname" .) -}}
+{{- $port := "8983" -}}
+{{- printf "http://%s:%s@%s:%s/solr/%s" $user $pass $host $port $collection  -}}
 {{- end -}}
 
 {{- define "shoreline.zk.fullname" -}}
