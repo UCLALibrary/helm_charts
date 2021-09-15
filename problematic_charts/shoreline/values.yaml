@@ -25,15 +25,22 @@ ingress:
   hosts: ['shoreline.local']
   tls: []
 
+# Set to true if a Secret already exists in the namespace for the Deployment
+existingSecret:
+  name: shoreline
+  enabled: false
+
 shoreline:
   db_setup_command: "db:migrate"
   geoblacklightDownloadPath: /data/tmp/cache/downloads
-  theme: ""
+  loadSolrConfigSet: true # use false to skip solr configset maintenance init container
+  theme: "ucsb"
   # whether to ingest fixture data during deployment
   sample_data:
   suppressTools: false
   solr:
     collectionName: collection1
+    # configName: shorelineconf
   email:
     contact_email: shoreline@example.edu
     delivery_method: letter_opener_web # or: smtp
@@ -48,11 +55,38 @@ shoreline:
 # Configuration for solr chart
 # see: https://github.com/helm/charts/blob/master/incubator/solr/values.yaml
 solr:
-  image:
-    repository: solr
-    tag: 8.7.0
   enabled: true
-  # If solr.enabled is false, then
+  image:
+    repository: bitnami/solr
+    tag: 8.9.0-debian-10-r38
+  authentication:
+    enabled: true
+    adminUsername: admin
+    adminPassword: admin
+  coreName: shoreline
+  collection: collection1
+  cloudBoostrap: true
+  cloudEnabled: true
+  # replicas: 3 # scale the stateful set up/down
+  # persistence:
+  #   enabled: false # uncomment to disable PVCs for disposable solr
+  # Settings for solr java memory
+  # javaMem: "-Xms2g -Xmx3g"
+  # resources: # set k8s memory resources to align with jvm settings
+  #   limits:
+  #     memory: 3Gi
+  #     cpu: 1
+  #   requests:
+  #     memory: 2Gi
+  #     cpu: 250m
+  # Settings for zk java memory
+  # zookeeper:
+  #   env:
+  #     JVMFLAGS: "-Xms512m -Xmx1g"
+  #   persistence:
+  #     enabled: false # uncomment to disable PVCs for disposable zk
+  #
+  # To use an external/preexisting solr, set solr.enabled to false, then
   #   * set solrHostname to external solr FQDN
   #   * set solrPort to external solr port
   #   * set zookeeperHostname to external zookeeper FQDN
@@ -61,12 +95,6 @@ solr:
   # solrPort: "8983"
   # zookeeperHostname: external-shoreline-zookeeper-fqdn
   # zookeeperPort: "2181"
-  # Settings for solr java memory
-  # javaMem: "-Xms2g -Xmx3g"
-  # Settings for zk java memory
-  # zookeeper:
-  #   env:
-  #     JVMFLAGS: "-Xms512m -Xmx1g"
 
 # Configuration for postgresql chart
 # see: https://github.com/kubernetes/charts/blob/master/stable/postgresql/README.md
@@ -74,7 +102,7 @@ postgresql:
   nameOverride: database
   image:
     repository: bitnami/postgresql
-    tag: 12.5.0
+    tag: 12.8.0
   enabled: true
   cpu: 1000m
   memory: 1Gi
@@ -89,11 +117,18 @@ postgresql:
     size: 10Gi
 
 geoserver:
+  enabled: true
+  # If geoserver.enabled is false, then
+  #   * set geoserverHostname to external geoserver FQDN
+  # geoserverHostname: external-shoreline-geoserver-fqdn
   admin:
+    username: admin
     password: shorelinegeo
   persistence:
     enabled: true
   ingress:
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: 512m
     enabled: true
     hosts: ['geoserver.local']
     tls: []

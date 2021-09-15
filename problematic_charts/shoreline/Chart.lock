@@ -4,9 +4,9 @@ dependencies:
   version: 8.10.14
 - name: geoserver
   repository: file://../geoserver
-  version: 1.0.0
+  version: 1.3.0
 - name: solr
-  repository: https://lib-helm-repo.ucsd.edu
-  version: 1.5.3
-digest: sha256:824a625c1f64b6b8c9ee7ba86fbe07ae0776902c6a689653b1d89891c3e110e6
-generated: "2021-03-12T15:37:05.392824333-08:00"
+  repository: https://charts.bitnami.com/bitnami
+  version: 1.0.5
+digest: sha256:8b1a77ae696b115cf5330afd4f061367b0ee9f6048a631a18bce3ea405c0220b
+generated: "2021-08-06T10:31:38.201889185-07:00"
