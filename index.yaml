@@ -277,6 +277,15 @@ entries:
   geoserver:
   - apiVersion: v1
     appVersion: "2.17"
+    created: "2021-11-02T22:50:21.18258449Z"
+    description: Helm charts for GeoServer. http://geoserver.org/
+    digest: a277bc85114367c048d768321305ffd77a7f169e98c5195a9f709685337fa4a7
+    name: geoserver
+    urls:
+    - https://github.com/UCLALibrary/helm_charts/releases/download/geoserver-1.3.0/geoserver-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v1
+    appVersion: "2.17"
     created: "2021-03-12T23:42:55.269320008Z"
     description: Helm charts for GeoServer. http://geoserver.org/
     digest: 9d000d2ac3c50089001e8021c59b9d227a7cfb92aec02a0b980037edb0436b8d
@@ -408,4 +417,4 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/terra-0.1.0/terra-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-24T03:09:49.075026962Z"
+generated: "2021-11-02T22:50:21.182630191Z"
