@@ -361,6 +361,28 @@ entries:
   shoreline:
   - apiVersion: v2
     appVersion: "0.1"
+    created: "2021-11-09T21:26:02.90201487Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.10.14
+    - condition: geoserver.enabled
+      name: geoserver
+      repository: file://../geoserver
+      version: 1.3.0
+    - condition: solr.enabled
+      name: solr
+      repository: https://charts.bitnami.com/bitnami
+      version: 2.1.2
+    description: Charts for GeoBlacklight & Shoreline
+    digest: 899f4cbbb53fe03f92e27e23dde458191e7f07256f7848492d471a64d2965e64
+    name: shoreline
+    urls:
+    - https://github.com/UCLALibrary/helm_charts/releases/download/shoreline-0.5.0/shoreline-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
+    appVersion: "0.1"
     created: "2021-03-12T23:42:55.45784541Z"
     dependencies:
     - condition: postgresql.enabled
@@ -417,4 +439,4 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/terra-0.1.0/terra-0.1.0.tgz
     version: 0.1.0
-generated: "2021-11-02T22:50:21.182630191Z"
+generated: "2021-11-09T21:26:02.90205827Z"
