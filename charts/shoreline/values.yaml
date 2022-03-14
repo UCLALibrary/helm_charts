@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: registry.gitlab.com/surfliner/surfliner/shoreline_discovery_app
-  name: shoreline_discovery_app
+  repository: registry.gitlab.com/surfliner/surfliner/shoreline
+  name: shoreline
   tag: stable
   pullPolicy: Always
 
@@ -57,8 +57,8 @@ solr:
   enabled: true
   image:
     repository: bitnami/solr
-    tag: 8.11.1-debian-10-r1
-  authentication:
+    tag: 8.11.1-debian-10-r78
+  auth:
     enabled: true
     adminUsername: admin
     adminPassword: admin
@@ -104,7 +104,7 @@ postgresql:
   nameOverride: database
   image:
     repository: bitnami/postgresql
-    tag: 12.9.0
+    tag: 12.10.0-debian-10-r26
   enabled: true
   cpu: 1000m
   memory: 1Gi

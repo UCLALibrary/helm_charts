@@ -14,14 +14,14 @@ spec:
     metadata:
       name: {{ include "shoreline.fullname" . }}-ingest-data
     spec:
-      restartPolicy: Never
+      restartPolicy: OnFailure
       containers:
         - name: ingest-sample-data
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           command:
-            - /home/shoreline/discovery/app/bin/ingest.sh
-            - /home/shoreline/discovery/app/spec/fixtures/shapefiles
+            - /home/shoreline/app/bin/ingest.sh
+            - /home/shoreline/app/spec/fixtures/shapefiles
           envFrom:
             - configMapRef:
                 name: {{ include "shoreline.fullname" . }}-env
