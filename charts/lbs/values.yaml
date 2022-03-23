@@ -41,7 +41,7 @@ django:
     db_user: ""
     db_host: ""
     # Include if externalSecrets enabled: "false"
-    #db_passwd: ""
+    #db_password: ""
     test_db_name: ""
     email_host: ""
     target_port: ""
@@ -50,7 +50,7 @@ django:
     backend: "systemManager"
     env: {}
     # Include below if enabled: "true"
-    #  db_passwd: ""
+    #  db_password: ""
     #  django_secret_key: ""
   
 
