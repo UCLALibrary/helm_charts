@@ -40,6 +40,7 @@ django:
     db_name: ""
     db_user: ""
     db_host: ""
+    db_port: ""
     # Include if externalSecrets enabled: "false"
     #db_password: ""
     test_db_name: ""
