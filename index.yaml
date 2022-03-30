@@ -340,6 +340,15 @@ entries:
   lbs:
   - apiVersion: v2
     appVersion: "0.1"
+    created: "2022-03-30T18:10:38.797961336Z"
+    description: Chart for LBS Django applications, including QDB UI
+    digest: 2d2dd9355b54b10a03c20c64c9640583a33539031c548d1dee5e62e8b3b88033
+    name: lbs
+    urls:
+    - https://github.com/UCLALibrary/helm_charts/releases/download/lbs-0.0.2/lbs-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: "0.1"
     created: "2022-03-30T17:45:55.03655786Z"
     description: Chart for LBS Django applications, including QDB UI
     digest: 3246cd8aadb3487196e4188455d646b6c8dddcf37ae1033a51205044be9450bf
@@ -471,4 +480,4 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/terra-0.1.0/terra-0.1.0.tgz
     version: 0.1.0
-generated: "2022-03-30T17:45:55.036609563Z"
+generated: "2022-03-30T18:10:38.798016836Z"
