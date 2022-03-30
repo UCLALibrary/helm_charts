@@ -337,6 +337,16 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/kubernetes-external-secrets-7.2.1/kubernetes-external-secrets-7.2.1.tgz
     version: 7.2.1
+  lbs:
+  - apiVersion: v2
+    appVersion: "0.1"
+    created: "2022-03-30T17:45:55.03655786Z"
+    description: Chart for LBS Django applications, including QDB UI
+    digest: 3246cd8aadb3487196e4188455d646b6c8dddcf37ae1033a51205044be9450bf
+    name: lbs
+    urls:
+    - https://github.com/UCLALibrary/helm_charts/releases/download/lbs-0.0.1/lbs-0.0.1.tgz
+    version: 0.0.1
   qdb-cron:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -461,4 +471,4 @@ entries:
     urls:
     - https://github.com/UCLALibrary/helm_charts/releases/download/terra-0.1.0/terra-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-17T18:23:05.37193824Z"
+generated: "2022-03-30T17:45:55.036609563Z"
