@@ -44,8 +44,18 @@ django:
     # Include if externalSecrets enabled: "false"
     #db_password: ""
     test_db_name: ""
-    email_host: ""
+    email_backend: ""
+    email_smtp_server: ""
+    email_smtp_port: ""
+    email_from_address: ""
+    email_password: ""
+    app_ip: ""
     target_port: ""
+    # QDB database server
+    qdb_db_server: ""
+    qdb_db_database: ""
+    qdb_db_user: ""
+
   externalSecrets:
     enabled: "false"
     backend: "systemManager"
@@ -53,6 +63,7 @@ django:
     # Include below if enabled: "true"
     #  db_password: ""
     #  django_secret_key: ""
+    #  qdb_password: ""
   
 
 resources: {}
