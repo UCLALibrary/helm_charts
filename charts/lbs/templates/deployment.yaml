@@ -30,14 +30,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /login/
               port: http
               httpHeaders:
                 - name: Host
                   value: {{ range .Values.django.env.allowed_hosts }}{{ . }}{{ end }}
           readinessProbe:
             httpGet:
-              path: /
+              path: /login/
               port: http
               httpHeaders:
                 - name: Host
