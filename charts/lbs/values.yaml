@@ -64,7 +64,7 @@ django:
     # Include below if enabled: "true"
     #  db_password: ""
     #  django_secret_key: ""
-    #  qdb_password: ""
+    #  qdb_db_password: ""
   
 
 resources: {}
